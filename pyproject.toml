@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "mobile-tools"
+version = "0.1.0"
+description = "mobile_tools for Android"
+authors = ["Hong <hong@ubuntu-lab-01>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
