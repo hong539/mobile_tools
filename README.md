@@ -2,21 +2,6 @@
 
 ## To-do-list
 
-* ~~Try RDBMS(Relational Database Management System):　SQLite, PostgreSQL~~
-* ~~For Doing [Django Tutorial: The Local Library website](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django) steps by steps.~~
-    * [source codes](https://github.com/mdn/django-locallibrary-tutorial/tree/main)
-* ~~Extend and prepare My skills to find some good web-backend/devops/architecture jobs.~~
-* Practice system architecture design.
-    * Update architecture with diagram
-* Deploy methods survey
-    * natively run on Linux host after activate virtual environment via "poetry shell"
-        * run with [django develeopment server](https://docs.djangoproject.com/en/4.2/intro/tutorial01/#the-development-server)
-        * run with [gunicorn](https://docs.djangoproject.com/en/4.2/howto/deployment/wsgi/gunicorn/)
-        * run with [puff-rs](https://docs.rs/puff-rs/0.1.8/puff_rs/#puff--django)            
-    * podmand run
-    * k8s deploy
-* Frontend    
-    * CSS work with [Tailwind CSS](https://tailwindcss.com/docs/installation)
 * Monitor and alert
     * [Sentry](https://github.com/getsentry)
         * [Rust Development at Sentry](https://develop.sentry.dev/rust/)
@@ -31,7 +16,7 @@
 ## Prerequisites
 
 * Linux host such as Arch Linux, Debian, Ubuntu, RHEL ...etc
-* Python == 3.8.16
+* Python >= 3.10
 * [pyenv+poetry](https://github.com/hong539/setup_dev_environment/blob/main/programming_languages/python/python.md#usage-with-pyenvpoetry)
     * pyenv for Python versions control
     * poetry for Project dependency control
@@ -48,28 +33,15 @@
 ## Quick Start
 
 ```shell
-#check out prerequisites to prepare your environment
-
-#setting up for start postgresql on every bootup
-sudo systemctl enable postgresql.service
-
-#running postgresql server with this commands
-#if everything is setting up!
-sudo systemctl status postgresql.service
-
 #spawns a virtual environment
 poetry shell
 
 #add packages
 #src: https://python-poetry.org/docs/cli/#add
 poetry add django
-poetry add gunicorn
-poetry add diagrams -G dev
-poetry add django-environ==0.10.0
 
 #remove packages
 poetry remove diagrams
-poetry remove django-environ
 
 #for help
 python3 manage.py help
@@ -79,38 +51,6 @@ python3 manage.py createsuperuser
 
 #run devserver
 python3 manage.py runserver
-
-
-#check gunicorn
-gunicorn --version
-#run with gunicorn
-#some test codes in misc
-gunicorn --workers=2 test_gunicorn01:app
-#run with django project
-#src: https://docs.djangoproject.com/en/4.2/howto/deployment/wsgi/gunicorn/
-gunicorn locallibrary.wsgi
-
-
-#Warning: You'll need to run these commands every time your models change in a way that will affect the structure of the data that needs to be stored (including both addition and removal of whole models and individual fields).
-python3 manage.py makemigrations
-python3 manage.py migrate
-
-#run test
-python3 manage.py test
-#Showing more test information
-python3 manage.py test --verbosity 2
-#Speeding things up
-python3 manage.py test --parallel auto
-#Running specific tests
-python3 manage.py test catalog.tests.test_models
-python3 manage.py test catalog.tests.test_views
-python3 manage.py test catalog.tests.test_forms
-
-#deploy check
-python3 manage.py check --deploy
-
-#Starts the Python interactive interpreter
-python3 manage.py shell
 
 #src: https://docs.python.org/3.8/library/sys.html#sys.path
 #A list of strings that specifies the search path for modules. 
